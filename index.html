@@ -9,8 +9,16 @@
       content="script-src 'self' 'unsafe-inline';"
     />
     <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/simplemde/dist/simplemde.min.css">
+    <script src="./node_modules/simplemde/dist/simplemde.min.js"></script>
 </head>
 <body>
-    <h1>Editor</h1>
+    <textarea id="editor"></textarea>
+
+    <script>
+      var editor = new SimpleMDE({ 
+        element: document.getElementById('editor') 
+      });
+    </script>
 </body>
 </html>
