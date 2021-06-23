@@ -1,13 +1,13 @@
 {
   "name": "markdown-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set DEBUG=true & electron .",
-    "publish:github": "electron-builder --win --dir",
+    "publish:github": "set GH_TOKEN=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 & electron-builder build --win --publish always",
     "build": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"
   },

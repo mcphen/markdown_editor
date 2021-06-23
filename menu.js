@@ -55,18 +55,6 @@ function loadFile() {
         ]
     },
     {
-      role: 'help',
-      submenu: [
-        {
-          label: 'About Editor Component',
-          click() {
-              shell.openExternal('https://simplemde.com/');
-          }
-        }
-      ]
-    },
-
-    {
         label: 'Format',
         submenu: [
           {
@@ -86,6 +74,19 @@ function loadFile() {
           },
         ]
       },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'About Editor Component',
+          click() {
+              shell.openExternal('https://simplemde.com/');
+          }
+        }
+      ]
+    },
+
+
    
 ];
 ipcMain.on('save', (event, arg) => {
