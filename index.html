@@ -27,10 +27,38 @@
 <body>
     <textarea id="editor"></textarea>
 
+    
     <script>
-      var editor = new SimpleMDE({ 
-        element: document.getElementById('editor') 
-      });
-    </script>
+        var editor = new SimpleMDE({
+          element: document.getElementById('editor')
+        });
+
+        const { ipcRenderer } = require('electron');
+
+        ipcRenderer.on('editor-event', (event, arg) => {
+          console.log(arg);
+          event.sender.send('editor-reply', `Received ${arg}`);
+  
+          if (arg === 'toggle-bold') {
+            editor.toggleBold();
+          }
+
+          if (arg === 'toggle-italic') {
+            editor.toggleItalic();
+          }
+
+          if (arg === 'save') {
+            event.sender.send('save', editor.value());
+            }
+        });
+
+        ipcRenderer.send('editor-reply', 'Page Loaded');
+
+        ipcRenderer.on('load', (event, content) => {
+            if (content) {
+            editor.value(content);
+            }
+        });
+  </script>
 </body>
 </html>

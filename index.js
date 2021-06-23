@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
+const menu = require('./menu');
 
 let window;
 
@@ -7,8 +8,11 @@ app.on('ready', () => {
       width: 800,
       height: 600,
       webPreferences: {
-        nodeIntegration: true
+        nodeIntegration: true,
+        contextIsolation: false,
       }
     });
     window.loadFile('index.html');
 });
+
+Menu.setApplicationMenu(menu);
