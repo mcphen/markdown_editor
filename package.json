@@ -6,16 +6,34 @@
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set DEBUG=true & electron ."
+    "start": "set DEBUG=true & electron .",
+    "publish:github": "electron-builder --win --dir",
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
+  },
+
+  "build": {
+    "appId": "com.my.markdown-editor",
+    "publish": {
+      "provider": "github",
+      "owner": "mcphen",
+      "repo": "markdown_editor"
+    }
   },
   "keywords": [],
-  "author": "",
+  "author": "enock",
   "license": "ISC",
   "devDependencies": {
     "electron": "^13.1.2",
     "electron-builder": "^22.11.7"
   },
   "dependencies": {
+    "electron-updater": "^4.3.9",
     "simplemde": "^1.11.2"
+  },
+
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/mcphen/markdown_editor.git"
   }
 }
